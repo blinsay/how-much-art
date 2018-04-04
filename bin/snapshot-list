@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -u
+set -e
+set -o pipefail
+
+if [ $# -eq 0 ]
+then
+ls -1 .snapshots | perl -pe 's/(.*)-\d{8}-\d{6}/$1/' | uniq -c
+else
+  ls -1 .snapshots | grep $1
+fi
+
+

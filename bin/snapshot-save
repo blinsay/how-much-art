@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -u
+set -e
+set -o pipefail
+
+grep_for_name() {
+  perl -ne 'print "$1" if /SKETCH: (\S+)/' $@
+}
+
+copy_snapshot() {
+  local snapshot_path=$1
+  mkdir -p $snapshot_path
+  cp -R index.html $snapshot_path
+  cp -R lib $snapshot_path
+  cp -R sketch $snapshot_path
+  cp -R package*.json $snapshot_path
+}
+
+NAME=$(grep_for_name sketch/*.ts)
+SNAPSHOT_ID=${NAME:-snapshot}-$(date +%Y%m%d-%H%M%S)
+
+echo ${SNAPSHOT_ID}
+copy_snapshot .snapshots/$SNAPSHOT_ID

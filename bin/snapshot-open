@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -u
+set -o pipefail
+
+open_by_id() {
+  local index=.snapshots/$1/index.html
+  if [ ! -f $index ]
+  then
+    return 1
+  fi
+  open $index
+}
+
+open_by_prefix() {
+  local name=$1
+  local latest=$(ls -1 .snapshots/ | grep $name | tail -n 1)
+  if [ -z $latest ]
+  then
+    return 2
+  fi
+  open_by_id $latest
+}
+
+# try opening by id, then falling back to opening by latest for that prefix, and
+# then give up.
+open_by_id $1
+if [ $? -eq 0 ]
+then
+  exit
+fi
+
+open_by_prefix $1
+if [ $? -ne 0 ]
+then
+  echo "IDK what you want"
+  exit -1
+fi
