@@ -78,7 +78,7 @@ function setup() {
 
 function draw() {
 
-  let padding = 250
+  let padding = 175
   let bounds = {
     x: padding,
     y: padding,

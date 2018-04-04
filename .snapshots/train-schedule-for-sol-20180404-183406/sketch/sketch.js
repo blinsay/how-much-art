@@ -52,7 +52,7 @@ function setup() {
     noLoop();
 }
 function draw() {
-    var padding = 250;
+    var padding = 175;
     var bounds = {
         x: padding,
         y: padding,
