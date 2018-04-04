@@ -1,0 +1,13 @@
+{
+  "include": [
+    "lib/*",
+    "sketch/*",
+  ],
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+  }
+}
