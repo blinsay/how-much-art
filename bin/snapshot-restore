@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -u
+set -e
+set -o pipefail
+
+clean_and_restore_snapshot() {
+  local snapshot_path=$1
+  if [ ! -d "$snapshot_path" ]
+  then
+    return 1
+  fi
+
+  rm -r lib/*
+  rm -r sketch/*
+
+  cp $snapshot_path/lib/* lib/
+  cp $snapshot_path/sketch/* sketch/
+  cp $snapshot_path/package*.json .
+  cp $snapshot_path/index.html .
+}
+
+if [ $# -eq 0 ]
+then
+  echo "need a snapshot to restore"
+  exit -1
+fi
+
+snapshot_dir=.snapshots/$1
+if [ ! -d $snapshot_dir ]
+then
+  echo "not an snapshot"
+  exit -1
+fi
+
+clean_and_restore_snapshot $snapshot_dir
