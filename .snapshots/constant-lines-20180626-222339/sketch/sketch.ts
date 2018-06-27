@@ -56,20 +56,16 @@ function setup() {
 }
 
 const ITERATIONS = 10;
-const X_PADDING = 250;
-const Y_PADDING = 250;
+const X_PADDING = 350;
+const Y_PADDING = 150;
 
 
 function draw() {
-  let makeSegments = () => randomSegments(15, 20, 50, 10, 20)
-
-  translate(windowWidth / 2, windowHeight / 2)
-  rotate(PI / 2)
-  translate(- windowWidth / 2, - windowHeight / 2)
+  let makeSegments = () => randomSegments(40, 5, 15, 5, 8)
 
   for (let offset = 0; offset < windowHeight - (2 * Y_PADDING); offset += 10) {
-    let x = X_PADDING
-    let y = Y_PADDING + offset
+    let x = X_PADDING;
+    let y = Y_PADDING + offset;
 
     makeSegments().forEach(segment => {
       let p1 = {x: x + segment.start, y: y}

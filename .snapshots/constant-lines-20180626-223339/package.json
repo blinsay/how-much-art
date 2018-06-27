@@ -1,0 +1,10 @@
+{
+  "name": "ugh-art-ts",
+  "version": "0.0.1",
+  "description": "tktktk",
+  "scripts": {},
+  "devDependencies": {
+    "typescript": "^2.8.1"
+  },
+  "dependencies": {}
+}

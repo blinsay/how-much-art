@@ -35,13 +35,10 @@ function setup() {
     noLoop();
 }
 var ITERATIONS = 10;
-var X_PADDING = 250;
-var Y_PADDING = 250;
+var X_PADDING = 350;
+var Y_PADDING = 150;
 function draw() {
-    var makeSegments = function () { return randomSegments(15, 20, 50, 10, 20); };
-    translate(windowWidth / 2, windowHeight / 2);
-    rotate(PI / 2);
-    translate(-windowWidth / 2, -windowHeight / 2);
+    var makeSegments = function () { return randomSegments(40, 5, 15, 5, 8); };
     var _loop_1 = function (offset) {
         var x = X_PADDING;
         var y = Y_PADDING + offset;
